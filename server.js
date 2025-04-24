@@ -14,27 +14,31 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(bodyParser.json({
-  strict: true,
-  verify: (req, res, buf) => {
-    try {
-      JSON.parse(buf);
-    } catch (e) {
-      throw new Error('Invalid JSON');
-    }
-  }
-}));
+app.use(
+  bodyParser.json({
+    strict: true,
+    verify: (req, res, buf) => {
+      try {
+        JSON.parse(buf);
+      } catch (e) {
+        throw new Error("Invalid JSON");
+      }
+    },
+  })
+);
 
 app.use((err, req, res, next) => {
-  if (err.message === 'Invalid JSON') {
-    return res.status(400).json({ error: 'Invalid JSON payload' });
+  if (err.message === "Invalid JSON") {
+    return res.status(400).json({ error: "Invalid JSON payload" });
   }
   next(err);
 });
 
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: [
+      "https://ecommercetest-iota.vercel.app/ecommerce-api-production-f1c1.up.railway.app",
+    ],
   })
 );
 app.use(express.json());
