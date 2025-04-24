@@ -37,7 +37,7 @@ app.use((err, req, res, next) => {
 app.use(
   cors({
     origin: [
-      "https://ecommercetest-iota.vercel.app/ecommerce-api-production-f1c1.up.railway.app",
+      "https://ecommercetest-iota.vercel.app/",
     ],
   })
 );
