@@ -37,7 +37,8 @@ app.use((err, req, res, next) => {
 app.use(
   cors({
     origin: [
-      "https://ecommercetest-iota.vercel.app",
+      "https://ecommerce-project-test.netlify.app",
+      "http://localhost:5173",
     ],
   })
 );
